@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 2</title>
+</head>
+<body>
+<input type="text"  id="num1">
+<input type="text"  id="num2">
+<input type="button" onclick="checkUSC(document.getElementById('num1').value,document.getElementById('num2').value)" value="CHECK USC" id="usc">
+<input type="button" onclick="checkBSC(document.getElementById('num1').value,document.getElementById('num2').value)" value="CHECK BSC" id="bsc">
+<p id="result"></p>
+<script>
+
+
+    function checkUSC(num1,num2) {
+        let min = null;
+        let max = null;
+        let us_min = [];
+        let us_max = [];
+        let usc;
+
+        if (num1 > num2){
+            min = num2;
+            max = num1;
+        }else {
+            min = num2;
+            max = num1;
+        }
+
+        if (max % min == 0 ){
+            usc = min;
+        }else {
+
+            for (i = 1; i <= min ;i++){
+                if (min % i == 0){
+                    us_min.push(i);
+                }
+            }
+
+        }
+
+        for (j = us_min.length - 1 ;j >= 0 ;j--){
+
+            if (max % us_min[j] == 0){
+                usc = us_min[j];break;
+            }
+
+        }
+        document.getElementById('result').innerText = "USC lon nhat la :"+usc;
+    }
+
+    function checkBSC(num1,num2) {
+        let min;
+        let max;
+        let bsc;
+        if (num1 > num2){
+            min = num2;
+            max = num1;
+        }else {
+            min = num2;
+            max = num1;
+        }
+
+        //console.log(min,max);
+
+        if (max % min == 0){
+            console.log(max);
+            bsc = max;
+        }else {
+            i = 1;
+            do {
+                i++;
+            }while (max*i % min != 0){
+                bsc = max*i;
+            }
+        }
+
+        document.getElementById('result').innerText = bsc;
+    }
+</script>
+</body>
+</html>
